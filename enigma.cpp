@@ -1,6 +1,11 @@
 #include "enigmaenc.cpp"
 #include <fstream>
 #include <iostream>
+#ifdef _WIN32
+#define Xpause system("pause")
+#else
+#define Xpause system("read -p \"Press any key to continue...\" -n 1")
+#endif
 
 int main(int argc, const char *argv[]) {
     // Example rotor settings, reflector, and plugboard settings (all in lowercase)
@@ -66,6 +71,7 @@ int main(int argc, const char *argv[]) {
         // Display the original and encrypted message
         std::cout << "Original Message: " << message << std::endl;
         std::cout << "Encrypted Message: " << encrypted_message << std::endl;
+        Xpause;
     }
 
     return 0;
